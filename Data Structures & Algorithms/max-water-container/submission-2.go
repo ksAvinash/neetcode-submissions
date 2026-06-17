@@ -1,0 +1,28 @@
+func maxArea(heights []int) int {
+	// top := 0
+	// for i, _ := range heights {
+	// 	for j, _ := range heights {
+	// 		area := min(heights[i], heights[j]) * int(math.Abs(float64(j-i)))
+	// 		// fmt.Println("area", heights[i], heights[j], area)
+	// 		if area > top {
+	// 			top = area
+	// 		}
+	// 	}
+	// }
+	// return top
+
+	max := 0
+	i, j := 0, len(heights)-1
+	for i <= j {
+		area := min(heights[i], heights[j]) * (j-i)
+		if area > max {
+			max = area
+		}
+		if heights[i] > heights[j] {
+			j--
+		} else {
+			i++
+		}
+	}
+	return max
+}
